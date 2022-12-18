@@ -10,14 +10,27 @@ public class PlatformSpawner : MonoBehaviour
     [SerializeField] private Platform platformPrefab;
     private Platform lastPlatformSpawned;
     private enum Side {Left, Right};
-    private void Awake() {
+    private Transform player;
+    private float distanceUntilNewPlatformSpawned = 10f;
+    private Queue<Platform> platformsSpawned = new Queue<Platform>();
+    private int maxPlatformAmount = 10;
+    private void Start() {
+        GameObject playerGO = GameObject.FindWithTag("Player") ?? throw new UnassignedReferenceException("There needs to be an object with the Player tag.");
+        player = playerGO.transform;
         lastPlatformSpawned = transform.GetChild(0).GetComponent<Platform>();
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < maxPlatformAmount; i++)
         {
             GenerateNewPlatform();
         }
     }
 
+    private void Update()
+    {
+        if(Mathf.Abs(player.position.y - lastPlatformSpawned.transform.position.y) < distanceUntilNewPlatformSpawned)
+        {
+            GenerateNewPlatform();
+        }
+    }
     private void GenerateNewPlatform()
     {
         Vector3 newPlatformPosition = new Vector2();
@@ -41,8 +54,14 @@ public class PlatformSpawner : MonoBehaviour
         newPlatformPosition.x = Random.Range(minX, maxX);
         newPlatformPosition.y = lastPlatformSpawned.transform.localPosition.y + Random.Range(minGapBetweenPlatforms.y, maxGapBetweenPlatforms.y);
         
-        Debug.Log($"Last platform position: {lastPlatformSpawned.transform.localPosition.x} - New platform position: {newPlatformPosition.x}");
-        Platform newPlatform = Instantiate(platformPrefab, transform);
+        Platform newPlatform;
+        if(platformsSpawned.Count >= maxPlatformAmount)
+            newPlatform = platformsSpawned.Dequeue();
+        else      
+            newPlatform = Instantiate(platformPrefab, transform);
+
+        Debug.Log(newPlatform, newPlatform);
+        platformsSpawned.Enqueue(newPlatform);
         newPlatform.transform.localPosition = newPlatformPosition;
         lastPlatformSpawned = newPlatform;
     }

@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class SmoothFollow : MonoBehaviour
 {
-    private Camera cameraToUse;
     [SerializeField] private Transform objectToFollow;
     [SerializeField] private Vector3 offset = new Vector3(0, 0, -10);
     [SerializeField] private float smoothing = .2f;
@@ -14,8 +13,7 @@ public class CameraFollow : MonoBehaviour
     private Transform thisTransform;
 
     private void Awake() {
-        cameraToUse = GetComponent<Camera>() ?? Camera.main;
-        thisTransform = cameraToUse.transform;
+        thisTransform = transform;
     }
     private void LateUpdate() {
         Vector3 currentPosition = thisTransform.position;
