@@ -5,8 +5,9 @@ using UnityEngine.Serialization;
 
 public class EnemiesController : MonoBehaviour
 {
+    //speed of enemy
     [SerializeField] float moveSpeed;
-
+    //distance of territory
     public int positionOfPatrol;
     public Transform point;
     private bool moveRight;

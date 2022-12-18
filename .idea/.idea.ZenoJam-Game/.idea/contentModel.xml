@@ -10,6 +10,7 @@
         <e p="Scripts" t="Include">
           <e p="CameraFollow.cs" t="Include" />
           <e p="EnemiesController.cs" t="Include" />
+          <e p="FallingPlatform.cs" t="Include" />
           <e p="Platform.cs" t="Include" />
           <e p="PlatformSpawner.cs" t="Include" />
         </e>
