@@ -7,6 +7,8 @@ public class FallingPlatform : MonoBehaviour
 {
     [SerializeField] Rigidbody2D _rigidbody2D;
     [SerializeField] GameObject player;
+    [SerializeField] float destroyDelay;
+    [SerializeField] private float fallDelay;
     
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,7 @@ public class FallingPlatform : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            PlatformFall(1, 0.5f);
+            PlatformFall(fallDelay, destroyDelay);
         }
     }
 
