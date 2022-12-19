@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9225801b63e8814385d17ee98bfb3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToFollow: {fileID: 0}
+  objectToFollow: {fileID: 525274477}
   offset: {x: 0, y: 3, z: -10}
   smoothing: 0.2
   followLeft: 0
@@ -560,7 +560,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 11.225756, y: -1.9263134}
@@ -722,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5547573036740917786, guid: 35fdda05a2910244d86dd5447da237c3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.963517
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5547573036740917786, guid: 35fdda05a2910244d86dd5447da237c3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -756,6 +756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 5547573036740917788, guid: 35fdda05a2910244d86dd5447da237c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35fdda05a2910244d86dd5447da237c3, type: 3}
 --- !u!1001 &8040517198908138466
@@ -779,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8040517199050356693, guid: 8e359f12effa6714cb1fd7ca8d91b79b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.0545545
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8040517199050356693, guid: 8e359f12effa6714cb1fd7ca8d91b79b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -840,7 +844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448224, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.28
+      value: -7.503
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448224, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -885,6 +889,18 @@ PrefabInstance:
     - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: _characterBounds.m_Extent.y
       value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
+      propertyPath: OnGrounded._PersistentCalls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
+      propertyPath: OnGrounded._PersistentCalls.Array.data[0]._Target
+      value: 
+      objectReference: {fileID: 519420033}
+    - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
+      propertyPath: OnGrounded._PersistentCalls.Array.data[0]._MethodName
+      value: Follow
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448230, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: m_Sprite

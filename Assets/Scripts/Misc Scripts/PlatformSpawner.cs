@@ -8,12 +8,16 @@ public class PlatformSpawner : MonoBehaviour
     [SerializeField] private Vector2 minGapBetweenPlatforms;
     [SerializeField] private float maxSpawnDistance;
     [SerializeField] private Platform platformPrefab;
+    [SerializeField] private int amountOfPlatformsBetweenEnemySpawns = 3;
+    private int platformCounter = 0;
     private Platform lastPlatformSpawned;
     private enum Side {Left, Right};
     private Transform player;
     private float distanceUntilNewPlatformSpawned = 10f;
     private Queue<Platform> platformsSpawned = new Queue<Platform>();
     private int maxPlatformAmount = 10;
+
+
     private void Start() {
         GameObject playerGO = GameObject.FindWithTag("Player") ?? throw new UnassignedReferenceException("There needs to be an object with the Player tag.");
         player = playerGO.transform;
@@ -24,6 +28,7 @@ public class PlatformSpawner : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
         if(Mathf.Abs(player.position.y - lastPlatformSpawned.transform.position.y) < distanceUntilNewPlatformSpawned)
@@ -31,12 +36,14 @@ public class PlatformSpawner : MonoBehaviour
             GenerateNewPlatform();
         }
     }
+
+
     private void GenerateNewPlatform()
     {
         Vector3 newPlatformPosition = new Vector2();
 
         float minX, maxX;
-        Side chosenSide = chooseSideToMakeNewPlatform();
+        Side chosenSide = ChooseSideToMakeNewPlatform();
         if(chosenSide == Side.Left)
         {
             minX = lastPlatformSpawned.transform.localPosition.x - lastPlatformSpawned.Size / 2 - maxGapBetweenPlatforms.x;
@@ -62,27 +69,32 @@ public class PlatformSpawner : MonoBehaviour
 
         platformsSpawned.Enqueue(newPlatform);
         newPlatform.transform.localPosition = newPlatformPosition;
+        if(platformCounter == 0)
+        {
+            newPlatform.SpawnEnemy();
+            platformCounter = 3;
+        }
+        platformCounter--;
         lastPlatformSpawned = newPlatform;
     }
 
 
-    private Side chooseSideToMakeNewPlatform()
+    private Side ChooseSideToMakeNewPlatform()
     {
-        if(!((lastPlatformSpawned.Left - minGapBetweenPlatforms.x - lastPlatformSpawned.Size / 2)> 0))
+        if(!((lastPlatformSpawned.Left - minGapBetweenPlatforms.x - lastPlatformSpawned.Size / 2) > 0))
             return Side.Right;
         
-        // (lastPlatformSpawned.Right + minGapBetweenPlatforms.x) < maxSpawnDistance
         if(!((lastPlatformSpawned.Right + minGapBetweenPlatforms.x + lastPlatformSpawned.Size / 2) < maxSpawnDistance))
             return Side.Left;
 
         return Random.value < 0.5f ? Side.Left : Side.Right;  
-    
     }
+
+
     private void OnDrawGizmos() {
         Vector3 linePosition = transform.position + Vector3.right * maxSpawnDistance;
 
         Gizmos.DrawLine(transform.position, transform.position + Vector3.up * 4);
         Gizmos.DrawLine(linePosition, linePosition + Vector3.up * 4);
-
     }
 }

@@ -49,6 +49,7 @@ MonoBehaviour:
   minGapBetweenPlatforms: {x: 4, y: 3}
   maxSpawnDistance: 32
   platformPrefab: {fileID: 8741493734842169362, guid: d48de42764420d04e86a9df3a314547a, type: 3}
+  amountOfPlatformsBetweenEnemySpawns: 3
 --- !u!1001 &5547573036254724236
 PrefabInstance:
   m_ObjectHideFlags: 0

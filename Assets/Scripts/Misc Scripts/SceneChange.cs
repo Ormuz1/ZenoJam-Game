@@ -7,5 +7,5 @@ public class SceneChange : MonoBehaviour
 {
     [SerializeField] private SceneReference sceneToSwitchTo;
 
-    public void SwitchScene() => LevelManager.I.SwitchLevel(sceneToSwitchTo);
+    public void SwitchScene() => LevelManager.SwitchLevel(sceneToSwitchTo);
 }

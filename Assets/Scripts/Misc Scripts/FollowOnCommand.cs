@@ -18,6 +18,15 @@ public class FollowOnCommand : MonoBehaviour
      private void Awake() {
         thisTransform = transform;
     }
+    private void Start() {
+        Vector3 startPosition = thisTransform.position;
+        Vector3 targetPosition = objectToFollow.position + offset;
+        if((!followRight && targetPosition.x > startPosition.x) || (!followLeft && targetPosition.x < startPosition.x))
+            targetPosition.x = startPosition.x;
+        if((!followUp && targetPosition.y > startPosition.y) || (!followDown && targetPosition.y < startPosition.y))
+            targetPosition.y = startPosition.y;
+        thisTransform.position = targetPosition;
+    }
 
     public void Follow()
     {
@@ -28,7 +37,6 @@ public class FollowOnCommand : MonoBehaviour
 
     private IEnumerator GoToObject()
     {
-        Debug.Log("Empezando movimiento.");
         Vector3 startPosition = thisTransform.position;
         Vector3 targetPosition = objectToFollow.position + offset;
         if((!followRight && targetPosition.x > startPosition.x) || (!followLeft && targetPosition.x < startPosition.x))

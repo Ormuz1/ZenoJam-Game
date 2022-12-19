@@ -19,13 +19,13 @@ public class PlayerAnimations : MonoBehaviour
     }
 
     private void LateUpdate() {
-        if(playerController.Velocity.x == 0)
+        if(playerController.RawMovement.x == 0)
         {
             animator.Play(idleAnimation);
             return;
         }
 
-        spriteRenderer.flipX = playerController.Velocity.x < 0;
+        spriteRenderer.flipX = playerController.RawMovement.x < 0;
         animator.Play(runAnimation);
     }
 }

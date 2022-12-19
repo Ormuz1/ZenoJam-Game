@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
         }
     }   
 
-    public void SwitchLevel(SceneReference scene)
+    public static void SwitchLevel(SceneReference scene)
     {
         if(!scene.IsSafeToUse)
         {
