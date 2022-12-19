@@ -60,7 +60,6 @@ public class PlatformSpawner : MonoBehaviour
         else      
             newPlatform = Instantiate(platformPrefab, transform);
 
-        Debug.Log(newPlatform, newPlatform);
         platformsSpawned.Enqueue(newPlatform);
         newPlatform.transform.localPosition = newPlatformPosition;
         lastPlatformSpawned = newPlatform;

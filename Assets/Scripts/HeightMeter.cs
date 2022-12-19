@@ -6,7 +6,7 @@ using TMPro;
 public class HeightMeter : MonoBehaviour
 {
     private float startHeight;
-    private float maxHeightReached = 0;
+    public static float maxHeightReached = 0;
     private Transform player;
     [SerializeField] private TextMeshProUGUI heightMeterText;
     [SerializeField] private string heightPretext = "Height: ";
