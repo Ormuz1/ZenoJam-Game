@@ -6,8 +6,8 @@ public class HeightText : MonoBehaviour
 {
     TextMeshProUGUI textComponent;
 
-    private void OnValidate() {
+    private void Start() {
         textComponent = GetComponent<TextMeshProUGUI>();
-        textComponent.text = "You reached a height of " + HeightMeter.maxHeightReached.ToString("####.#").Replace(",", "") + " meters!";
+        textComponent.text = "You reached a height of " + HeightMeter.maxHeightReached.ToString("000.0").Replace(",", "") + " meters!";
     }
 }
