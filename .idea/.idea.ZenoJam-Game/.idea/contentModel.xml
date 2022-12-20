@@ -136,14 +136,19 @@
             <e p="PlatformSpawner.cs" t="Include" />
             <e p="SceneChange.cs" t="Include" />
             <e p="SmoothFollow.cs" t="Include" />
+            <e p="UpDownScript.cs" t="Include" />
           </e>
           <e p="NormalEnemy.cs" t="Include" />
           <e p="Player Scripts" t="Include">
             <e p="PlayerAnimations.cs" t="Include" />
+            <e p="PlayerDrilling.cs" t="Include" />
           </e>
         </e>
         <e p="Settings" t="Include">
           <e p="Scenes" t="Include" />
+        </e>
+        <e p="UI Toolkit" t="Include">
+          <e p="UnityThemes" t="Include" />
         </e>
       </e>
       <e p="Eflatun.SceneReference.csproj" t="IncludeRecursive" />
