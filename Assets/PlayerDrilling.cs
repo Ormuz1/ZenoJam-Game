@@ -9,6 +9,7 @@ public class PlayerDrilling : MonoBehaviour
     [SerializeField] private Collider2D drillHitbox;
     [SerializeField] private LayerMask drillableLayer;
     [SerializeField] private float drillSpeed;
+    [SerializeField] private float speedWhenComingOut;
     [SerializeField] private UltEvents.UltEvent OnStartDrilling;
     [SerializeField] private UltEvents.UltEvent OnStopDrilling;
     [SerializeField] private UltEvents.UltEvent OnDrilling;
@@ -31,12 +32,15 @@ public class PlayerDrilling : MonoBehaviour
         
         if (drillHitbox.OverlapCollider(drillFilter, drillOverlapColliders) == 0)
         {
-            if(isDrilling && !playerHitbox.IsTouchingLayers(drillableLayer))
+            if(isDrilling && playerHitbox.OverlapCollider(drillFilter, drillOverlapColliders) == 0)
             {
+                drillVelocity *= 1.5f;
                 OnStopDrilling.Invoke();
                 isDrilling = false;
+                return;
             }
-            return;
+            if(!isDrilling)
+                return;
         }
 
         if(!isDrilling)  

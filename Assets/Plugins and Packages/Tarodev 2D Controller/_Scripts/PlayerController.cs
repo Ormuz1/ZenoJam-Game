@@ -26,7 +26,12 @@ public class PlayerController : MonoBehaviour, IPlayerController {
         _currentHorizontalSpeed += force.x;
         _currentVerticalSpeed += force.y;
     }
-
+    public void Reset() 
+    {
+        _currentHorizontalSpeed = 0;
+        _currentVerticalSpeed = 0;
+        _colDown = _colLeft = _colRight = _colUp = false;
+    }
     private Vector3 _lastPosition;
     private float _currentHorizontalSpeed, _currentVerticalSpeed;
 
