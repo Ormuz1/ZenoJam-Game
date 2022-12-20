@@ -134,13 +134,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1009761680496874393, guid: e0bcec7f1c7fa3e49aa46ad51505a705, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1009761680496874394, guid: e0bcec7f1c7fa3e49aa46ad51505a705, type: 3}
       propertyPath: objectToFollow
       value: 
       objectReference: {fileID: 1530496411}
     - target: {fileID: 1009761680496874397, guid: e0bcec7f1c7fa3e49aa46ad51505a705, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1009761680496874397, guid: e0bcec7f1c7fa3e49aa46ad51505a705, type: 3}
       propertyPath: m_LocalPosition.x
@@ -250,7 +254,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6598485224980797651, guid: d48de42764420d04e86a9df3a314547a, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6598485224980797651, guid: d48de42764420d04e86a9df3a314547a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -487,11 +491,11 @@ PrefabInstance:
     - target: {fileID: 7737759714830315656, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: OnStopDrilling._PersistentCalls.Array.data[4]._Target
       value: 
-      objectReference: {fileID: 1639905057}
+      objectReference: {fileID: 1639905059}
     - target: {fileID: 7737759714830315656, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: OnStartDrilling._PersistentCalls.Array.data[1]._Target
       value: 
-      objectReference: {fileID: 1639905057}
+      objectReference: {fileID: 1639905059}
     - target: {fileID: 7737759714830315656, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: OnStopDrilling._PersistentCalls.Array.data[4]._MethodName
       value: set_enabled
@@ -530,15 +534,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448224, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448224, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.67
+      value: -5.92
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448224, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.03
+      value: -4.92
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448224, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -571,6 +575,18 @@ PrefabInstance:
     - target: {fileID: 8555584646093448224, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
+      propertyPath: OnGrounded._PersistentCalls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
+      propertyPath: OnGrounded._PersistentCalls.Array.data[0]._Target
+      value: 
+      objectReference: {fileID: 1639905060}
+    - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
+      propertyPath: OnGrounded._PersistentCalls.Array.data[0]._MethodName
+      value: Follow
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448231, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: m_Name
@@ -634,17 +650,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 399640127221446191, guid: 997a361e7b61c5948939c5b5319fda9c, type: 3}
+      propertyPath: objectToFollow
+      value: 
+      objectReference: {fileID: 1530496411}
     - target: {fileID: 399640127221446354, guid: 997a361e7b61c5948939c5b5319fda9c, type: 3}
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 997a361e7b61c5948939c5b5319fda9c, type: 3}
---- !u!20 &1639905057 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 399640127221446353, guid: 997a361e7b61c5948939c5b5319fda9c, type: 3}
-  m_PrefabInstance: {fileID: 1639905056}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1639905058 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 399640127221446354, guid: 997a361e7b61c5948939c5b5319fda9c, type: 3}
@@ -663,9 +678,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 1530496411}
-  offset: {x: 0, y: 3, z: -10}
+  offset: {x: 0, y: 0, z: -10}
   smoothing: 0.2
   followLeft: 0
   followRight: 0
   followUp: 1
   followDown: 1
+--- !u!114 &1639905060 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 399640127221446191, guid: 997a361e7b61c5948939c5b5319fda9c, type: 3}
+  m_PrefabInstance: {fileID: 1639905056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639905058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9225801b63e8814385d17ee98bfb3cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
