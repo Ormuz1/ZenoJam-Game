@@ -21,6 +21,12 @@ public class PlayerController : MonoBehaviour, IPlayerController {
     public bool LandingThisFrame { get; private set; }
     public Vector3 RawMovement { get; private set; }
     public bool Grounded => _colDown;
+    public void AddForce(Vector2 force)
+    {
+        _currentHorizontalSpeed += force.x;
+        _currentVerticalSpeed += force.y;
+    }
+
     private Vector3 _lastPosition;
     private float _currentHorizontalSpeed, _currentVerticalSpeed;
 

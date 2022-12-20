@@ -72,7 +72,7 @@ public class PlatformSpawner : MonoBehaviour
         if(platformCounter == 0)
         {
             newPlatform.SpawnEnemy();
-            platformCounter = 3;
+            platformCounter = amountOfPlatformsBetweenEnemySpawns;
         }
         platformCounter--;
         lastPlatformSpawned = newPlatform;
