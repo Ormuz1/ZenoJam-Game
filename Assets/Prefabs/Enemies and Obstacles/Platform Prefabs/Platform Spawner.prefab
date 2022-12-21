@@ -47,11 +47,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxGapBetweenPlatforms: {x: 10, y: 5}
   minGapBetweenPlatforms: {x: 4, y: 3}
-  maxSpawnDistance: 32
+  maxSpawnDistance: 28
   platformPrefabs:
   - {fileID: 8741493734842169362, guid: d48de42764420d04e86a9df3a314547a, type: 3}
   - {fileID: 8844706772358820595, guid: 750a5ece06e90de448fdec61c909a25a, type: 3}
   - {fileID: 3133967947810495377, guid: 678622ae398bdbf46a8e042df1a3fd6f, type: 3}
+  - {fileID: 7744415292308982049, guid: d8d304252a3804fc48ea59866e148281, type: 3}
   amountOfPlatformsBetweenEnemySpawns: 3
 --- !u!1001 &5547573036254724236
 PrefabInstance:

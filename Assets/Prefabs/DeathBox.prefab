@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1009761680496874399}
   - component: {fileID: 1856992554987186431}
   - component: {fileID: 7363182918562986113}
+  - component: {fileID: 2648765707598214399}
   m_Layer: 0
   m_Name: DeathBox
   m_TagString: Untagged
@@ -128,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbfc70013a810340a97d57da9fa498c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {x: 0, y: 0, z: 0}
+  movement: {x: 0, y: 1, z: 0}
 --- !u!212 &7363182918562986113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -181,3 +182,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2648765707598214399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009761680496874393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397a31cfe6ab25a4d851a770e8974d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anchor: {fileID: 0}
+  maxDistance: {x: Infinity, y: 15, z: Infinity}
