@@ -6,7 +6,14 @@
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Art" t="Include" />
+        <e p="Art" t="Include">
+          <e p="Animations" t="Include" />
+          <e p="SFX" t="Include" />
+          <e p="Sprites" t="Include" />
+        </e>
+        <e p="ConstantMovement.cs" t="Include" />
+        <e p="Credits.txt" t="Include" />
+        <e p="DistanceLock.cs" t="Include" />
         <e p="Plugins and Packages" t="Include">
           <e p="Eflatun" t="Include">
             <e p="Resources" t="Include">
@@ -112,7 +119,11 @@
             <e p="UltEvents.asmdef" t="Include" />
           </e>
         </e>
-        <e p="Prefabs" t="Include" />
+        <e p="Prefabs" t="Include">
+          <e p="Enemies and Obstacles" t="Include">
+            <e p="Platform Prefabs" t="Include" />
+          </e>
+        </e>
         <e p="Resources" t="Include">
           <e p="Eflatun" t="Include">
             <e p="SceneReference" t="Include">
@@ -122,6 +133,11 @@
         </e>
         <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
+          <e p="Enemy Scripts" t="Include">
+            <e p="EnemyBase.cs" t="Include" />
+            <e p="NormalEnemy.cs" t="Include" />
+            <e p="PendulumMovement.cs" t="Include" />
+          </e>
           <e p="GUI scripts" t="Include">
             <e p="HeightMeter.cs" t="Include" />
             <e p="HeightText.cs" t="Include" />
@@ -137,10 +153,11 @@
             <e p="SceneChange.cs" t="Include" />
             <e p="SmoothFollow.cs" t="Include" />
             <e p="UpDownScript.cs" t="Include" />
+            <e p="Utility.cs" t="Include" />
           </e>
-          <e p="NormalEnemy.cs" t="Include" />
           <e p="Player Scripts" t="Include">
             <e p="PlayerAnimations.cs" t="Include" />
+            <e p="PlayerDamage.cs" t="Include" />
             <e p="PlayerDrilling.cs" t="Include" />
           </e>
         </e>
