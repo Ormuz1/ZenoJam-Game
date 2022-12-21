@@ -18,17 +18,23 @@ public class PlayerDrilling : MonoBehaviour
     private List<Collider2D> drillOverlapColliders = new List<Collider2D>();
     private bool isDrilling = false;
     private Collider2D playerHitbox;
+    private Quaternion drillStartRotation;
 
     private void Awake() {
         drillFilter.SetLayerMask(drillableLayer);
         playerHitbox = GetComponent<Collider2D>();
+        drillStartRotation = drillPivot.rotation;
     }
 
     private void Update() {
-        RotateTowardsMouse(drillPivot);
 
         if(!Input.GetButton("Fire1"))
+        {
+            drillPivot.rotation = drillStartRotation;
             return;
+        }
+
+        RotateTowardsMouse(drillPivot);
         
         if (drillHitbox.OverlapCollider(drillFilter, drillOverlapColliders) == 0)
         {

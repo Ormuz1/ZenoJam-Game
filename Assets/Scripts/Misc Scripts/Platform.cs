@@ -11,14 +11,23 @@ public class Platform : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform positionToSpawnEnemies;
     [SerializeField] private GameObject enemyToSpawn;
-
+    private GameObject spawnedEnemy;
     private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void SpawnEnemy()
+    public void SpawnObstacle()
     {
-        if (!(enemyToSpawn is null))
-            Instantiate(enemyToSpawn, positionToSpawnEnemies.position, Quaternion.identity);
+        if (!(enemyToSpawn == null))
+            spawnedEnemy = Instantiate(enemyToSpawn, positionToSpawnEnemies.position, Quaternion.identity);
+    }
+
+    public void DespawnEnemy()
+    {
+        if(!(spawnedEnemy == null))
+        {
+            spawnedEnemy.SetActive(false);
+            Destroy(spawnedEnemy);
+        }
     }
 }

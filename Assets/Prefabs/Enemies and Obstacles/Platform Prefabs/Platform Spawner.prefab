@@ -48,7 +48,10 @@ MonoBehaviour:
   maxGapBetweenPlatforms: {x: 10, y: 5}
   minGapBetweenPlatforms: {x: 4, y: 3}
   maxSpawnDistance: 32
-  platformPrefab: {fileID: 8741493734842169362, guid: d48de42764420d04e86a9df3a314547a, type: 3}
+  platformPrefabs:
+  - {fileID: 8741493734842169362, guid: d48de42764420d04e86a9df3a314547a, type: 3}
+  - {fileID: 8844706772358820595, guid: 750a5ece06e90de448fdec61c909a25a, type: 3}
+  - {fileID: 3133967947810495377, guid: 678622ae398bdbf46a8e042df1a3fd6f, type: 3}
   amountOfPlatformsBetweenEnemySpawns: 3
 --- !u!1001 &5547573036254724236
 PrefabInstance:
@@ -63,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598485224980797651, guid: d48de42764420d04e86a9df3a314547a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 11.9564
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6598485224980797651, guid: d48de42764420d04e86a9df3a314547a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -71,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598485224980797651, guid: d48de42764420d04e86a9df3a314547a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6598485224980797651, guid: d48de42764420d04e86a9df3a314547a, type: 3}
       propertyPath: m_LocalPosition.z

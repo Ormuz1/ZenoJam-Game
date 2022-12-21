@@ -1,0 +1,7 @@
+
+
+
+Font:
+    - Extrude by Nic (https://www.pentacom.jp/pentacom/bitfontmaker2/gallery/?id=238)
+SFX:
+    - Jump and Hit sound effects by phoenix1291 (https://opengameart.org/content/sound-effects-pack-2)

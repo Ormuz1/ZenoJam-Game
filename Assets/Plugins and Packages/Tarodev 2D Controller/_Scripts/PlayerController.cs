@@ -59,8 +59,22 @@ public class PlayerController : MonoBehaviour, IPlayerController {
 
 
     #region Gather Input
-
+    private bool canControlPlayer = true;
+    public void DisablePlayerControl(float duration)
+    {
+        canControlPlayer = false;
+        this.InvokeAction(() => canControlPlayer = true, duration);
+    }
     private void GatherInput() {
+        if(!canControlPlayer)
+        {
+            Input = new FrameInput {
+                JumpDown = false,
+                JumpUp = false,
+                X = 0
+            };
+            return;
+        }
         Input = new FrameInput {
             JumpDown = UnityEngine.Input.GetButtonDown("Jump"),
             JumpUp = UnityEngine.Input.GetButtonUp("Jump"),
@@ -77,6 +91,7 @@ public class PlayerController : MonoBehaviour, IPlayerController {
 
     [Header("COLLISION")] [SerializeField] private Bounds _characterBounds;
     [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private LayerMask _oneWayPlatformLayer;
     [SerializeField] private int _detectorCount = 3;
     [SerializeField] private float _detectionRayLength = 0.1f;
     [SerializeField] [Range(0.1f, 0.3f)] private float _rayBuffer = 0.1f; // Prevents side detectors hitting the ground
@@ -93,7 +108,7 @@ public class PlayerController : MonoBehaviour, IPlayerController {
 
         // Ground
         LandingThisFrame = false;
-        var groundedCheck = RunDetection(_raysDown);
+        var groundedCheck = RunDetection(_raysDown) || RunOneWayDetection(_raysDown);
         if (_colDown && !groundedCheck) _timeLeftGrounded = Time.time; // Only trigger when first leaving
         else if (!_colDown && groundedCheck) {
             _coyoteUsable = true; // Only trigger when first touching
@@ -110,6 +125,10 @@ public class PlayerController : MonoBehaviour, IPlayerController {
 
         bool RunDetection(RayRange range) {
             return EvaluateRayPositions(range).Any(point => Physics2D.Raycast(point, range.Dir, _detectionRayLength, _groundLayer));
+        }
+
+        bool RunOneWayDetection(RayRange range){
+            return EvaluateRayPositions(range).Any(point => Physics2D.Raycast(point, range.Dir, _detectionRayLength, _oneWayPlatformLayer)) && _currentVerticalSpeed <= 0;
         }
     }
 
@@ -223,6 +242,7 @@ public class PlayerController : MonoBehaviour, IPlayerController {
     [SerializeField] private float _coyoteTimeThreshold = 0.1f;
     [SerializeField] private float _jumpBuffer = 0.1f;
     [SerializeField] private float _jumpEndEarlyGravityModifier = 3;
+    [SerializeField] private UltEvents.UltEvent OnJump;
     private bool _coyoteUsable;
     private bool _endedJumpEarly = true;
     private float _apexPoint; // Becomes 1 at the apex of a jump
@@ -249,6 +269,7 @@ public class PlayerController : MonoBehaviour, IPlayerController {
             _coyoteUsable = false;
             _timeLeftGrounded = float.MinValue;
             JumpingThisFrame = true;
+            OnJump.Invoke();
         }
         else {
             JumpingThisFrame = false;

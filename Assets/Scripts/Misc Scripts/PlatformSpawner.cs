@@ -7,7 +7,7 @@ public class PlatformSpawner : MonoBehaviour
     [SerializeField] private Vector2 maxGapBetweenPlatforms;
     [SerializeField] private Vector2 minGapBetweenPlatforms;
     [SerializeField] private float maxSpawnDistance;
-    [SerializeField] private Platform platformPrefab;
+    [SerializeField] private Platform[] platformPrefabs;
     [SerializeField] private int amountOfPlatformsBetweenEnemySpawns = 3;
     private int platformCounter = 0;
     private Platform lastPlatformSpawned;
@@ -63,18 +63,19 @@ public class PlatformSpawner : MonoBehaviour
         
         Platform newPlatform;
         if(platformsSpawned.Count >= maxPlatformAmount)
+        {
             newPlatform = platformsSpawned.Dequeue();
+            newPlatform.DespawnEnemy();
+        }
         else      
-            newPlatform = Instantiate(platformPrefab, transform);
+        {
+            newPlatform = Instantiate(platformPrefabs[Random.Range(0, platformPrefabs.Length)], transform);            
+        }
 
         platformsSpawned.Enqueue(newPlatform);
         newPlatform.transform.localPosition = newPlatformPosition;
-        if(platformCounter == 0)
-        {
-            newPlatform.SpawnEnemy();
-            platformCounter = amountOfPlatformsBetweenEnemySpawns;
-        }
-        platformCounter--;
+        newPlatform.SpawnObstacle();
+    
         lastPlatformSpawned = newPlatform;
     }
 

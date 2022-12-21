@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Renderer))]
-public class NormalEnemy : MonoBehaviour
+public class NormalEnemy : EnemyBase
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private LayerMask groundLayer;
@@ -11,12 +11,12 @@ public class NormalEnemy : MonoBehaviour
     private Renderer sprite;
     private Vector3 bottomLeftCorner, bottomRightCorner;
     private Collider2D thisCollider;
-    private Collider2D playerHurtbox;
-    [SerializeField] private UltEvents.UltEvent OnPlayerTouch;
+    private PlayerDamage playerDamage;
+
     private void Awake() {
         thisCollider = GetComponent<BoxCollider2D>();
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        playerHurtbox = playerObject.GetComponent<Collider2D>();
+        playerDamage = playerObject.GetComponent<PlayerDamage>();
         sprite = GetComponent<Renderer>();
 
     }
@@ -29,14 +29,10 @@ public class NormalEnemy : MonoBehaviour
         if(EnemyReachedTheCorner())
             direction *= -1;
         transform.position += Vector3.right * speed * direction * Time.deltaTime;
-        if(IsTouchingPlayer())
-            OnPlayerTouch.Invoke();
+        if(thisCollider.IsTouching(playerDamage.hurtbox))
+            playerDamage.OnPlayerHurt();
     }
 
-    private bool IsTouchingPlayer()
-    {
-        return thisCollider.IsTouching(playerHurtbox);
-    }
     private bool EnemyReachedTheCorner()
     {
         Vector3 rayOrigin = direction == 1 ? bottomRightCorner : bottomLeftCorner;
