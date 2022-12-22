@@ -13,14 +13,14 @@ public class SmoothFollow : MonoBehaviour
     [SerializeField] private bool followDown = true;
     private Vector3 velocity;
     private Transform thisTransform;
-
+    private Vector3 targetPosition;
     private void Awake() {
         thisTransform = transform;
     }
 
     private void LateUpdate() {
         Vector3 currentPosition = thisTransform.position;
-        Vector3 targetPosition = objectToFollow.position + offset;
+        targetPosition = objectToFollow.position + offset;
         if((!followRight && targetPosition.x > currentPosition.x) || (!followLeft && targetPosition.x < currentPosition.x))
             targetPosition.x = currentPosition.x;
         if((!followUp && targetPosition.y > currentPosition.y) || (!followDown && targetPosition.y < currentPosition.y))

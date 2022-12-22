@@ -8,79 +8,93 @@ public class PlatformSpawner : MonoBehaviour
     [SerializeField] private Vector2 minGapBetweenPlatforms;
     [SerializeField] private float maxSpawnDistance;
     [SerializeField] private Platform[] platformPrefabs;
-    [SerializeField] private int amountOfPlatformsBetweenEnemySpawns = 3;
-    [SerializeField] private Transform enemyHolder;
-    private int platformCounter = 0;
+    [SerializeField] private int platformsBetweenLevelSegments = 10;
+    [SerializeField] private GameObject[] levelSegments;
     private Platform lastPlatformSpawned;
     private enum Side {Left, Right};
     private Transform player;
-    private float distanceUntilNewPlatformSpawned = 10f;
-    private Queue<Platform> platformsSpawned = new Queue<Platform>();
-    private int maxPlatformAmount = 10;
-
-
+    private float distanceUntilNextGeneration = 10f;
+    private bool shouldGenerateLevelSegment = false;
+    private int lastLevelSegmentGenerated;
+    private Queue<GameObject> generatedStuff = new Queue<GameObject>();
+    
     private void Start() {
         GameObject playerGO = GameObject.FindWithTag("Player") ?? throw new UnassignedReferenceException("There needs to be an object with the Player tag.");
         player = playerGO.transform;
         lastPlatformSpawned = transform.GetChild(0).GetComponent<Platform>();
-        for(int i = 0; i < maxPlatformAmount; i++)
-        {
-            GenerateNewPlatform();
-        }
     }
 
 
     private void Update()
     {
-        if(Mathf.Abs(player.position.y - lastPlatformSpawned.transform.position.y) < distanceUntilNewPlatformSpawned)
+        if(Mathf.Abs(player.position.y - lastPlatformSpawned.transform.position.y) > distanceUntilNextGeneration)
+            return;
+        
+        if(shouldGenerateLevelSegment)
+            SpawnLevelSegment();
+        else
+            SpawnPlatforms();
+
+        shouldGenerateLevelSegment = !shouldGenerateLevelSegment;
+        if(generatedStuff.Count > 10)
+        {
+            Destroy(generatedStuff.Dequeue());
+        }
+    }
+
+    private void SpawnLevelSegment()
+    {
+        Vector3 segmentSpawnPosition = lastPlatformSpawned.transform.position;
+        segmentSpawnPosition.y += Random.Range(minGapBetweenPlatforms.y, maxGapBetweenPlatforms.y);
+        segmentSpawnPosition.x = transform.position.x;
+        int chosenSegment = Random.Range(0, levelSegments.Length);
+        while(chosenSegment == lastLevelSegmentGenerated)
+        {
+            chosenSegment = Random.Range(0, levelSegments.Length);
+        }
+        GameObject spawnedSegment = Instantiate(levelSegments[chosenSegment], segmentSpawnPosition, Quaternion.identity, transform);
+        lastPlatformSpawned = spawnedSegment.transform.GetChild(0).GetChild(spawnedSegment.transform.GetChild(0).childCount - 1).GetComponent<Platform>();
+        generatedStuff.Enqueue(spawnedSegment);
+    }
+
+    private void SpawnPlatforms()
+    {
+        for(int i = 0; i < platformsBetweenLevelSegments; i++)
         {
             GenerateNewPlatform();
         }
     }
-
-
     private void GenerateNewPlatform()
     {
         Vector3 newPlatformPosition = new Vector2();
 
         float minX, maxX;
         Side chosenSide = ChooseSideToMakeNewPlatform();
+        Vector3 lastPlatformPosition = transform.InverseTransformPoint(lastPlatformSpawned.transform.position);
         if(chosenSide == Side.Left)
         {
-            minX = lastPlatformSpawned.transform.localPosition.x - lastPlatformSpawned.Size / 2 - maxGapBetweenPlatforms.x;
-            maxX = lastPlatformSpawned.transform.localPosition.x - lastPlatformSpawned.Size / 2 - minGapBetweenPlatforms.x;
+            minX = lastPlatformPosition.x - lastPlatformSpawned.Size / 2 - maxGapBetweenPlatforms.x;
+            maxX = lastPlatformPosition.x - lastPlatformSpawned.Size / 2 - minGapBetweenPlatforms.x;
             if (minX < 0)
                 minX = 0 + lastPlatformSpawned.Size / 2;
         }
         else
         {
-            minX = lastPlatformSpawned.transform.localPosition.x + lastPlatformSpawned.Size / 2 + minGapBetweenPlatforms.x;
-            maxX = lastPlatformSpawned.transform.localPosition.x + lastPlatformSpawned.Size / 2 + maxGapBetweenPlatforms.x;
+            minX = lastPlatformPosition.x + lastPlatformSpawned.Size / 2 + minGapBetweenPlatforms.x;
+            maxX = lastPlatformPosition.x + lastPlatformSpawned.Size / 2 + maxGapBetweenPlatforms.x;
             if (maxX > maxSpawnDistance)
                 maxX = maxSpawnDistance - lastPlatformSpawned.Size / 2;
         }
         newPlatformPosition.x = Random.Range(minX, maxX);
-        newPlatformPosition.y = lastPlatformSpawned.transform.localPosition.y + Random.Range(minGapBetweenPlatforms.y, maxGapBetweenPlatforms.y);
+        newPlatformPosition.y = lastPlatformPosition.y + Random.Range(minGapBetweenPlatforms.y, maxGapBetweenPlatforms.y);
         
         Platform newPlatform;
-        if(platformsSpawned.Count >= maxPlatformAmount)
-        {
-            Platform oldestPlatform = platformsSpawned.Dequeue();
-            if(oldestPlatform != null)
-            {
-                oldestPlatform.DespawnEnemy();
-                Destroy(oldestPlatform.gameObject);
-            }
-        }
-      
+
         newPlatform = Instantiate(platformPrefabs[Random.Range(0, platformPrefabs.Length)], transform);            
 
-        platformsSpawned.Enqueue(newPlatform);
         newPlatform.transform.localPosition = newPlatformPosition;
         newPlatform.SpawnObstacle();
-
-        if(enemyHolder != null && newPlatform.spawnedEnemy != null)
-            newPlatform.spawnedEnemy.transform.SetParent(enemyHolder);
+        generatedStuff.Enqueue(newPlatform.gameObject);
         lastPlatformSpawned = newPlatform;
     }
 

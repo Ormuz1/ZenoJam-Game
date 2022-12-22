@@ -19,7 +19,10 @@ public class Platform : MonoBehaviour
     public void SpawnObstacle()
     {
         if (!(enemyToSpawn == null))
+        {
             spawnedEnemy = Instantiate(enemyToSpawn, enemySpawnPositions[Random.Range(0, enemySpawnPositions.Length - 1)].position, Quaternion.identity);
+            spawnedEnemy.transform.SetParent(transform, true);
+        }
     }
 
     public void DespawnEnemy()
