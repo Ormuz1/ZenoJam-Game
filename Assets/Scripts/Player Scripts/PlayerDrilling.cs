@@ -19,7 +19,8 @@ public class PlayerDrilling : MonoBehaviour
     private bool isDrilling = false;
     private Collider2D playerHitbox;
     private Quaternion drillStartRotation;
-
+    [SerializeField] private SpriteMask drillSpriteMask;
+    private SpriteMask lastSpriteMask;
     private void Awake() {
         drillFilter.SetLayerMask(drillableLayer);
         playerHitbox = GetComponent<Collider2D>();
@@ -61,6 +62,11 @@ public class PlayerDrilling : MonoBehaviour
         Vector2 mouseDirection = (mousePosition - (Vector2) transform.position).normalized;
         drillVelocity = mouseDirection * drillSpeed;
         transform.Translate(drillVelocity * Time.deltaTime);
+        if(lastSpriteMask == null || !lastSpriteMask.bounds.Contains(transform.position))
+        {
+            lastSpriteMask = Instantiate(drillSpriteMask, transform.position, Quaternion.identity);
+            lastSpriteMask.transform.SetParent(drillOverlapColliders[0].transform, true);
+        }
     }
 
     private void RotateTowardsMouse(Transform objectToRotate)

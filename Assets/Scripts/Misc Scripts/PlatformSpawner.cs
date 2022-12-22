@@ -73,7 +73,7 @@ public class PlatformSpawner : MonoBehaviour
             }
         }
       
-        newPlatform = Instantiate(platformPrefabs[Random.Range(0, platformPrefabs.Length - 1)], transform);            
+        newPlatform = Instantiate(platformPrefabs[Random.Range(0, platformPrefabs.Length)], transform);            
 
         platformsSpawned.Enqueue(newPlatform);
         newPlatform.transform.localPosition = newPlatformPosition;

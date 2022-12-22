@@ -448,6 +448,7 @@ MonoBehaviour:
         _Object: {fileID: 0}
   OnDrilling:
     _PersistentCalls: []
+  drillSpriteMask: {fileID: 5083204969964942985, guid: 8502f3285e3670043a9dfa597d53e044, type: 3}
 --- !u!114 &1417168300882079705
 MonoBehaviour:
   m_ObjectHideFlags: 0
