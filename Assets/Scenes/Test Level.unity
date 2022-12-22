@@ -241,31 +241,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: OnGrounded._PersistentCalls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: OnGrounded._PersistentCalls.Array.data[0]._Target
       value: 
-      objectReference: {fileID: 1639905059}
-    - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
-      propertyPath: OnGrounded._PersistentCalls.Array.data[1]._Target
-      value: 
       objectReference: {fileID: 1639905060}
     - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: OnGrounded._PersistentCalls.Array.data[0]._MethodName
-      value: set_enabled
-      objectReference: {fileID: 0}
-    - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
-      propertyPath: OnGrounded._PersistentCalls.Array.data[1]._MethodName
       value: Follow
-      objectReference: {fileID: 0}
-    - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
-      propertyPath: OnGrounded._PersistentCalls.Array.data[0]._PersistentArguments.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8555584646093448225, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
-      propertyPath: OnGrounded._PersistentCalls.Array.data[0]._PersistentArguments.Array.data[0]._Type
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8555584646093448231, guid: 9d72edbdd8baa824688cf222cde0ae5b, type: 3}
       propertyPath: m_Name

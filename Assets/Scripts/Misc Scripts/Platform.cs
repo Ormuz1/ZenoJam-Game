@@ -11,7 +11,7 @@ public class Platform : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform[] enemySpawnPositions;
     [SerializeField] private GameObject enemyToSpawn;
-    public GameObject spawnedEnemy;
+    private GameObject spawnedEnemy;
     private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
