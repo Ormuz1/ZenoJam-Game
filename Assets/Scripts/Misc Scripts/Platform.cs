@@ -9,9 +9,9 @@ public class Platform : MonoBehaviour
     public float Right {get => transform.localPosition.x + Size / 2;}
     public float Size { get => spriteRenderer.bounds.size.x; }
     private SpriteRenderer spriteRenderer;
-    [SerializeField] private Transform[] enemySpawnPositions;
+    [SerializeField] private Transform positionToSpawnEnemies;
     [SerializeField] private GameObject enemyToSpawn;
-    public GameObject spawnedEnemy;
+    private GameObject spawnedEnemy;
     private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -19,7 +19,7 @@ public class Platform : MonoBehaviour
     public void SpawnObstacle()
     {
         if (!(enemyToSpawn == null))
-            spawnedEnemy = Instantiate(enemyToSpawn, enemySpawnPositions[Random.Range(0, enemySpawnPositions.Length - 1)].position, Quaternion.identity);
+            spawnedEnemy = Instantiate(enemyToSpawn, positionToSpawnEnemies.position, Quaternion.identity);
     }
 
     public void DespawnEnemy()
