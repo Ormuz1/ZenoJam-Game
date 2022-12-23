@@ -52,6 +52,7 @@ public class PlatformSpawner : MonoBehaviour
         {
             chosenSegment = Random.Range(0, levelSegments.Length);
         }
+        lastLevelSegmentGenerated = chosenSegment;
         GameObject spawnedSegment = Instantiate(levelSegments[chosenSegment], segmentSpawnPosition, Quaternion.identity, transform);
         lastPlatformSpawned = spawnedSegment.transform.GetChild(0).GetChild(spawnedSegment.transform.GetChild(0).childCount - 1).GetComponent<Platform>();
         generatedStuff.Enqueue(spawnedSegment);

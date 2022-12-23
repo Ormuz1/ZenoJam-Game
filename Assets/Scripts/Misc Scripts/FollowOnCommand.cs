@@ -50,4 +50,9 @@ public class FollowOnCommand : MonoBehaviour
         }
         thisTransform.position = targetPosition;
     }
+
+
+    private void OnDisable() {
+        StopAllCoroutines();
+    }
 }
