@@ -139,7 +139,7 @@ MonoBehaviour:
   followLeft: 0
   followRight: 0
   followUp: 1
-  followDown: 1
+  followDown: 0
 --- !u!114 &5899894119238454487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,17 +147,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399640127221446354}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9dd660b157e92b49b4b2b61197f08c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 0}
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 3, z: -10}
   smoothing: 0.2
   followLeft: 0
   followRight: 0
-  followUp: 1
+  followUp: 0
   followDown: 1
 --- !u!1 &2064888352244448474
 GameObject:

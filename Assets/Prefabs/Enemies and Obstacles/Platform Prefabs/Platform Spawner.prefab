@@ -45,15 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2e90aa77fbf2c49b6a7a9431bfb2f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxGapBetweenPlatforms: {x: 10, y: 5}
+  maxGapBetweenPlatforms: {x: 10, y: 4.2}
   minGapBetweenPlatforms: {x: 4, y: 3}
-  maxSpawnDistance: 24.5
+  maxSpawnDistance: 21
   platformPrefabs:
   - {fileID: 8741493734842169362, guid: d48de42764420d04e86a9df3a314547a, type: 3}
   - {fileID: 8844706772358820595, guid: 750a5ece06e90de448fdec61c909a25a, type: 3}
   - {fileID: 3133967947810495377, guid: 678622ae398bdbf46a8e042df1a3fd6f, type: 3}
-  - {fileID: 7744415292308982049, guid: d8d304252a3804fc48ea59866e148281, type: 3}
-  enemyHolder: {fileID: 0}
+  - {fileID: 7744415292308982049, guid: bdfa60c42662f8c4a86fe744ec792aa7, type: 3}
   platformsBetweenLevelSegments: 10
   levelSegments:
   - {fileID: 1061416764003666071, guid: 35d16d2577413ef43a9cba55e9a3cfa2, type: 3}
@@ -80,7 +79,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598485224980797651, guid: d48de42764420d04e86a9df3a314547a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 6598485224980797651, guid: d48de42764420d04e86a9df3a314547a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -117,6 +116,22 @@ PrefabInstance:
     - target: {fileID: 6598485224980797660, guid: d48de42764420d04e86a9df3a314547a, type: 3}
       propertyPath: m_Name
       value: Platform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598485224980797661, guid: d48de42764420d04e86a9df3a314547a, type: 3}
+      propertyPath: m_Size.x
+      value: 3.933447
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598485224980797661, guid: d48de42764420d04e86a9df3a314547a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.12796035
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598485224980797661, guid: d48de42764420d04e86a9df3a314547a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.007565558
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598485224980797661, guid: d48de42764420d04e86a9df3a314547a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.000000074505806
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d48de42764420d04e86a9df3a314547a, type: 3}
