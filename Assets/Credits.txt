@@ -1,6 +1,15 @@
+Team:
+    ° Ormuz - Programmer
+    ° Tyzo - Programmer
+    ° ZeroKirai - Artist
 
 
 
+
+External assets
+
+Sprites:
+    - Lava sprite by davesch on OpenGameArt (https://opengameart.org/content/16x16-and-animated-lava-tile-45-frames)
 Font:
     - Extrude by Nic (https://www.pentacom.jp/pentacom/bitfontmaker2/gallery/?id=238)
 SFX:

@@ -711,7 +711,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name of the game!
+  m_text: 'Mole escape
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f7ff1c4a25ff8745acc4efa14a92c72, type: 2}
   m_sharedMaterial: {fileID: -1075879320405653583, guid: 7f7ff1c4a25ff8745acc4efa14a92c72, type: 2}
